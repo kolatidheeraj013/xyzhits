@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle 0ojtux51</title>
+
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+h2 {
+    color: #333;
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population & Food Security Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Population Growth & Food Security Calculator</h2>
+        <label for="population">Initial Population:</label>
+        <input type="number" id="population" placeholder="Enter initial population">
+        
+        <label for="growthRate">Growth Rate (% per year):</label>
+        <input type="number" id="growthRate" placeholder="Enter growth rate">
+        
+        <label for="years">Number of Years:</label>
+        <input type="number" id="years" placeholder="Enter years">
+        
+        <label for="foodProduction">Initial Food Production (tons):</label>
+        <input type="number" id="foodProduction" placeholder="Enter food production">
+        
+        <button onclick="calculateGrowth()">Calculate</button>
+        
+        <h3>Results:</h3>
+        <p id="populationResult"></p>
+        <p id="foodResult"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+  <script>
+    function calculateGrowth() {
+    let P0 = parseFloat(document.getElementById("population").value);
+    let r = parseFloat(document.getElementById("growthRate").value) / 100;
+    let t = parseFloat(document.getElementById("years").value);
+    let F0 = parseFloat(document.getElementById("foodProduction").value);
+    
+    // Population Growth Formula: P(t) = P0 * e^(rt)
+    let Pt = P0 * Math.exp(r * t);
+    
+    // Assuming food production grows at a linear rate (simplified)
+    let Ft = F0 + (F0 * (r * t)); 
+    
+    // Display results
+    document.getElementById("populationResult").innerHTML = `Estimated Population after ${t} years: <strong>${Math.round(Pt)}</strong>`;
+    document.getElementById("foodResult").innerHTML = `Estimated Food Production after ${t} years: <strong>${Math.round(Ft)} tons</strong>`;
+}
+
+  </script>
+</body>
+</html>

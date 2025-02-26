@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle 0ojtux51</title>
+
+  <style>
+    /* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2196F3, #03A9F4);
+    color: white;
+}
+
+/* Container Styling */
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Input Fields */
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Button Styling */
+button {
+    padding: 12px 20px;
+    background: #FFD700;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #FFC107;
+}
+
+/* Result Display */
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Food & Water Demand Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Hostel Food & Water Demand Predictor</h2>
+
+        <label>Current Hostel Residents:</label>
+        <input type="number" id="residents" placeholder="Enter number of residents"><br>
+
+        <label>Monthly Growth Rate (%):</label>
+        <input type="number" id="growthRate" placeholder="Enter growth rate"><br>
+
+        <label>Food Per Resident (kg/day):</label>
+        <input type="number" id="foodPerResident" placeholder="Enter food per resident"><br>
+
+        <label>Water Per Resident (L/day):</label>
+        <input type="number" id="waterPerResident" placeholder="Enter water per resident"><br>
+
+        <label>Months Ahead:</label>
+        <input type="number" id="months" placeholder="Enter number of months"><br>
+
+        <button onclick="calculateNeeds()">Predict Needs</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateNeeds() {
+            let R0 = parseFloat(document.getElementById("residents").value);
+            let r = parseFloat(document.getElementById("growthRate").value) / 100;
+            let foodPerResident = parseFloat(document.getElementById("foodPerResident").value);
+            let waterPerResident = parseFloat(document.getElementById("waterPerResident").value);
+            let t = parseInt(document.getElementById("months").value);
+
+            // Exponential Growth Formula: R(t) = R0 * e^(r * t)
+            let futureResidents = R0 * Math.exp(r * t);
+            let dailyFoodNeeded = futureResidents * foodPerResident;
+            let dailyWaterNeeded = futureResidents * waterPerResident;
+            let totalFoodNeeded = dailyFoodNeeded * 30 * t; // Monthly supply
+            let totalWaterNeeded = dailyWaterNeeded * 30 * t; 
+
+            document.getElementById("result").innerHTML = 
+                `<b>In ${t} months:</b><br>
+                Estimated Residents: ${futureResidents.toFixed(2)}<br>
+                Daily Food Needed: ${dailyFoodNeeded.toFixed(2)} kg<br>
+                Daily Water Needed: ${dailyWaterNeeded.toFixed(2)} L<br>
+                Total Food for ${t} months: ${totalFoodNeeded.toFixed(2)} kg<br>
+                Total Water for ${t} months: ${totalWaterNeeded.toFixed(2)} L`;
+        }
+    </script>
+
+</body>
+</html>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
